@@ -5,13 +5,13 @@ Servo panServo;
 Servo tiltServo;
 
 // 측정한 중앙값과 안전 범위
-const int PAN_CENTER = 84;
-const int PAN_MIN = 44;
-const int PAN_MAX = 124;
+const int PAN_CENTER = 86;
+const int PAN_MIN = 66;   // 왼쪽 한계
+const int PAN_MAX = 116;  // 오른쪽 한계
 
-const int TILT_CENTER = 108;
-const int TILT_MIN = 88;
-const int TILT_MAX = 158;
+const int TILT_CENTER = 72;
+const int TILT_MIN = 42;  // 위쪽 한계
+const int TILT_MAX = 72;  // 아래쪽 한계
 
 void setup() {
   Serial.begin(115200);
@@ -40,7 +40,7 @@ void loop() {
   int tilt;
   char extra;
 
-  // "84,108" 형식 확인
+  // "86,72" 형식 확인
   if (sscanf(
         command.c_str(),
         "%d,%d%c",
